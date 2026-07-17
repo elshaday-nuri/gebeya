@@ -1,0 +1,23 @@
+body{
+    background:#f8f9fa;
+}
+
+
+.card{
+    border:none;
+    transition:0.3s;
+}
+
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+.navbar-brand{
+
+    font-size:24px;
+
+}
