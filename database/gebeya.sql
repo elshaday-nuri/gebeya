@@ -42,12 +42,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
-(1, 1, 1, 2),
-(2, 1, 1, 1),
-(3, 3, 1, 1),
-(14, 2, 2, 1),
-(13, 2, 1, 1);
+
 
 -- --------------------------------------------------------
 
@@ -62,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -101,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `shipping_cost` decimal(10,2) DEFAULT '0.00',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
