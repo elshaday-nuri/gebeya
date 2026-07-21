@@ -13,6 +13,8 @@ import Footer from "./components/layout/Footer";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Orders from "./pages/Orders";
+import Admin from "./pages/Admin";
+import AdminRoute from "./components/protected/AdminRoute";
 
 
 function App() {
@@ -38,6 +40,14 @@ function App() {
   element={<OrderSuccess />}
 />
 <Route path="/orders" element={<Orders />} />
+<Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <Admin />
+    </AdminRoute>
+  }
+/>
       </Routes>
       
       <Footer />
