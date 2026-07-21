@@ -68,6 +68,14 @@ const Product = {
       callback
     );
   },
-};
+
+delete: (id, callback) => {
+  const sql = `
+    DELETE FROM products
+    WHERE id = ?
+  `;
+
+  db.query(sql, [id], callback);
+},
 
 module.exports = Product;

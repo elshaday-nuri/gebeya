@@ -93,7 +93,35 @@ function Admin() {
       setAdding(false);
     }
   };
+const deleteProduct = async (productId, productName) => {
+  const confirmed = window.confirm(
+    `Are you sure you want to delete "${productName}"?`
+  );
 
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    setError("");
+    setMessage("");
+
+    const response = await api.delete(
+      `/admin/products/${productId}`
+    );
+
+    setMessage(response.data.message);
+
+    await loadAdminData();
+  } catch (err) {
+    console.error(err);
+
+    setError(
+      err.response?.data?.message ||
+        "Product could not be deleted."
+    );
+  }
+};
   if (loading) {
     return (
       <main className="container py-5">
@@ -278,6 +306,7 @@ function Admin() {
                   <th>Category</th>
                   <th>Price</th>
                   <th>Stock</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
 
@@ -314,6 +343,16 @@ function Admin() {
                     </td>
 
                     <td>{product.stock}</td>
+                    <td>
+  <button
+    className="btn btn-sm btn-outline-danger"
+    onClick={() =>
+      deleteProduct(product.id, product.name)
+    }
+  >
+    Delete
+  </button>
+</td>
                   </tr>
                 ))}
               </tbody>

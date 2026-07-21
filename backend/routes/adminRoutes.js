@@ -143,5 +143,38 @@ router.post(
     );
   }
 );
+router.delete(
+  "/products/:id",
+  authenticateToken,
+  requireAdmin,
+  (req, res) => {
+    const productId = Number(req.params.id);
+
+    if (!Number.isInteger(productId) || productId <= 0) {
+      return res.status(400).json({
+        message: "Invalid product ID.",
+      });
+    }
+
+    Product.delete(productId, (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Product could not be deleted.",
+          error: err.message,
+        });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({
+          message: "Product not found.",
+        });
+      }
+
+      res.json({
+        message: "Product deleted successfully.",
+      });
+    });
+  }
+);
 
 module.exports = router;
