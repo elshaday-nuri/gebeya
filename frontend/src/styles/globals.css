@@ -2086,3 +2086,19 @@ img{
     flex-direction: column;
   }
 }
+.admin-nav-link {
+  background: #3b2a1f;
+  color: white !important;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.admin-nav-link:hover {
+  background: #b3470a;
+  color: white !important;
+  transform: translateY(-1px);
+}

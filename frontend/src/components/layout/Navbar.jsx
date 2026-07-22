@@ -58,9 +58,13 @@ function Navbar() {
 
           {user ? (
   <>
-    <Link to="/orders">
-      My Orders
-    </Link>
+    <Link to="/orders">My Orders</Link>
+
+    {user.role === "admin" && (
+      <Link to="/admin" className="admin-nav-link">
+        Admin Dashboard
+      </Link>
+    )}
 
     <span className="navbar-user-name">
       Hello, {user.name}
@@ -75,11 +79,11 @@ function Navbar() {
     </button>
   </>
 ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )}
+  <>
+    <Link to="/login">Login</Link>
+    <Link to="/register">Register</Link>
+  </>
+)}
         </div>
       </div>
     </nav>
